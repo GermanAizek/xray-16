@@ -361,7 +361,16 @@ bool CAI_Stalker::can_take(CInventoryItem const* item)
 {
     const CWeapon* new_weapon = smart_cast<const CWeapon*>(item);
     if (!new_weapon)
-        return (false);
+        return false;
+
+    if (critically_wounded() || inside_anomaly())
+        return false;
+
+    if (IsTalking() || IsTrading())
+        return false;
+
+    if (get_current_smart_cover())
+        return false;
 
     bool new_weapon_enough_ammo = enough_ammo(new_weapon);
     u32 new_weapon_rank = get_rank(new_weapon->cNameSect());
