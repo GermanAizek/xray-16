@@ -7,6 +7,9 @@
 #include "xrCore/ModuleLookup.hpp"
 
 #include <SDL.h>
+#include <SDL_vulkan.h>
+
+#define DXVK_WSI_SDL2 1
 
 SDL_HitTestResult WindowHitTest(SDL_Window* win, const SDL_Point* area, void* data);
 
@@ -19,6 +22,12 @@ void CRenderDevice::Initialize()
     {
         Uint32 flags = SDL_WINDOW_BORDERLESS | SDL_WINDOW_HIDDEN |
             SDL_WINDOW_RESIZABLE;
+
+#if defined(_WIN32)
+        flags |= SDL_WINDOW_OPENGL;
+#else // for DXVK Native
+        flags |= SDL_WINDOW_VULKAN;
+#endif
 
         GEnv.Render->ObtainRequiredWindowFlags(flags);
 

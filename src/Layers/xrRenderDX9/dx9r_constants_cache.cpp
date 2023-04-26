@@ -1,5 +1,7 @@
+#ifdef _WIN32
 #include "stdafx.h"
 #pragma hdrstop
+#endif
 
 #include "Layers/xrRender/r_constants_cache.h"
 

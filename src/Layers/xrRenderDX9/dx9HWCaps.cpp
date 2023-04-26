@@ -1,10 +1,12 @@
+#ifdef _WIN32
 #include "stdafx.h"
 #pragma hdrstop
+#endif
 
 #include "Layers/xrRender/HWCaps.h"
 #include "dx9HW.h"
 
-#if !defined(_EDITOR)
+#if !defined(_EDITOR) && defined(_WIN32)
 #include <nvapi.h>
 #endif
 

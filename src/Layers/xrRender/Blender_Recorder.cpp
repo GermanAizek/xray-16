@@ -2,8 +2,10 @@
 //
 //////////////////////////////////////////////////////////////////////
 
+#ifdef _WIN32
 #include "stdafx.h"
 #pragma hdrstop
+#endif
 
 #include "Layers/xrRender/ResourceManager.h"
 #include "Blender_Recorder.h"

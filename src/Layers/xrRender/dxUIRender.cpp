@@ -1,4 +1,6 @@
+#ifdef _WIN32
 #include "stdafx.h"
+#endif
 #include "dxUIRender.h"
 
 #include "dxUIShader.h"

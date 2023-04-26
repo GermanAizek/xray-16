@@ -1,4 +1,6 @@
+#ifdef _WIN32
 #include "stdafx.h"
+#endif
 #include "DetailManager.h"
 
 void CDetailManager::cache_Initialize()

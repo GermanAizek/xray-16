@@ -1,7 +1,9 @@
 // file: D3DUtils.cpp
 
+#ifdef _WIN32
 #include "stdafx.h"
 #pragma hdrstop
+#endif
 
 #include "xrEngine/GameFont.h"
 #include "D3DUtils.h"
