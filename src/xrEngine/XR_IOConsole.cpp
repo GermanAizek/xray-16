@@ -40,7 +40,7 @@ extern char const* const ioc_prompt;
 char const* const ioc_prompt = ">>> ";
 
 extern char const* const ch_cursor;
-char const* const ch_cursor = "_";
+char const* const ch_cursor = "|";
 
 text_editor::line_edit_control& CConsole::ec() { return m_editor->control(); }
 u32 CConsole::get_mark_color(Console_mark type)
@@ -264,6 +264,7 @@ void CConsole::OnRender()
 
     float ypos = fMaxY - LDIST * 1.1f;
     float scr_x = 1.0f / Device.fWidth_2;
+    float scr_y = 1.0f / Device.fHeight_2;
 
     //---------------------------------------------------------------------------------
     float scr_width = 1.9f * Device.fWidth_2;
@@ -328,7 +329,7 @@ void CConsole::OnRender()
     if (ec().cursor_view())
     {
         pFont->SetColor(cursor_font_color);
-        pFont->OutI(-1.0f + str_length * scr_x, ypos, "%s", ch_cursor);
+        pFont->OutI(-1.0f - (scr_x * 3.3) + str_length * scr_x, ypos - (scr_y * 2), "%s", ch_cursor);
     }
 
     // ---------------------
