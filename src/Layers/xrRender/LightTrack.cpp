@@ -2,7 +2,9 @@
 //
 //////////////////////////////////////////////////////////////////////
 
+#ifdef _WIN32
 #include "stdafx.h"
+#endif
 #include "LightTrack.h"
 #include "Include/xrRender/RenderVisual.h"
 #include "xrEngine/xr_object.h"

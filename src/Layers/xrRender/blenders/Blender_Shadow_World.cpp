@@ -1,5 +1,7 @@
+#ifdef _WIN32
 #include "stdafx.h"
 #pragma hdrstop
+#endif
 
 #include "Blender_Shadow_World.h"
 

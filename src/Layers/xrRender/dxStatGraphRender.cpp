@@ -1,4 +1,6 @@
+#ifdef _WIN32
 #include "stdafx.h"
+#endif
 #include "dxStatGraphRender.h"
 
 void dxStatGraphRender::Copy(IStatGraphRender& _in) { *this = *((dxStatGraphRender*)&_in); }

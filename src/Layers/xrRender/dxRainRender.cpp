@@ -1,4 +1,6 @@
+#ifdef _WIN32
 #include "stdafx.h"
+#endif
 #include "dxRainRender.h"
 
 #include "xrEngine/IGame_Persistent.h"

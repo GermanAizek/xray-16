@@ -1,4 +1,6 @@
+#ifdef _WIN32
 #include "stdafx.h"
+#endif
 #include "dxUIShader.h"
 
 void dxUIShader::Copy(IUIShader& _in) { *this = *((dxUIShader*)&_in); }

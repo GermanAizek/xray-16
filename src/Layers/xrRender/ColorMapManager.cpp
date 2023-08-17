@@ -1,4 +1,6 @@
+#ifdef _WIN32
 #include "stdafx.h"
+#endif
 #include "ColorMapManager.h"
 
 ColorMapManager::ColorMapManager()

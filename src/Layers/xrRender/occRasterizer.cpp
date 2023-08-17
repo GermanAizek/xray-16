@@ -2,7 +2,9 @@
 //
 //////////////////////////////////////////////////////////////////////
 
+#ifdef _WIN32
 #include "stdafx.h"
+#endif
 #include "occRasterizer.h"
 
 #ifdef DEBUG 

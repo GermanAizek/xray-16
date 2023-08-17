@@ -1,4 +1,6 @@
+#ifdef _WIN32
 #include "stdafx.h"
+#endif
 
 #include "Layers/xrRender/ResourceManager.h"
 #include "Layers/xrRender/tss.h"

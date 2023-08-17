@@ -133,6 +133,21 @@ inline int GetExceptionCode()
 
 inline void convert_path_separators(char * path);
 
+#undef far
+#undef near
+#undef pascal
+
+#define far
+#define near
+
+#undef FAR
+#undef  NEAR
+#define FAR                 far
+#define NEAR                near
+#ifndef CONST
+#define CONST               const
+#endif
+
 #include <inttypes.h>
 typedef int32_t BOOL;
 typedef uint16_t WORD;
@@ -153,6 +168,8 @@ typedef long long int LARGE_INTEGER;
 typedef unsigned long long int ULARGE_INTEGER;
 
 typedef wchar_t WCHAR;
+typedef char CHAR;
+typedef double DOUBLE;
 
 #define WAVE_FORMAT_PCM  0x0001
 
@@ -1067,6 +1084,155 @@ typedef void *HIC;
 #define D3DTSS_TCI_CAMERASPACEPOSITION            0x20000
 #define D3DTSS_TCI_CAMERASPACEREFLECTIONVECTOR    0x30000
 #define D3DTSS_TCI_SPHEREMAP                      0x40000
+
+#ifndef _TEXTMETRIC_DEFINED
+#define _TEXTMETRIC_DEFINED
+typedef struct tagTEXTMETRICW
+{
+    LONG tmHeight;
+    LONG tmAscent;
+    LONG tmDescent;
+    LONG tmInternalLeading;
+    LONG tmExternalLeading;
+    LONG tmAveCharWidth;
+    LONG tmMaxCharWidth;
+    LONG tmWeight;
+    LONG tmOverhang;
+    LONG tmDigitizedAspectX;
+    LONG tmDigitizedAspectY;
+    WCHAR tmFirstChar;
+    WCHAR tmLastChar;
+    WCHAR tmDefaultChar;
+    WCHAR tmBreakChar;
+    uint8_t tmItalic;
+    uint8_t tmUnderlined;
+    uint8_t tmStruckOut;
+    uint8_t tmPitchAndFamily;
+    uint8_t tmCharSet;
+} 	TEXTMETRICW;
+
+typedef struct tagTEXTMETRICW *PTEXTMETRICW;
+
+typedef struct tagTEXTMETRICW *LPTEXTMETRICW;
+
+#endif // !_TEXTMETRIC_DEFINED
+
+typedef struct tagTEXTMETRICA
+{
+    LONG        tmHeight;
+    LONG        tmAscent;
+    LONG        tmDescent;
+    LONG        tmInternalLeading;
+    LONG        tmExternalLeading;
+    LONG        tmAveCharWidth;
+    LONG        tmMaxCharWidth;
+    LONG        tmWeight;
+    LONG        tmOverhang;
+    LONG        tmDigitizedAspectX;
+    LONG        tmDigitizedAspectY;
+    uint8_t     tmFirstChar;
+    uint8_t     tmLastChar;
+    uint8_t     tmDefaultChar;
+    uint8_t     tmBreakChar;
+    uint8_t     tmItalic;
+    uint8_t     tmUnderlined;
+    uint8_t     tmStruckOut;
+    uint8_t     tmPitchAndFamily;
+    uint8_t     tmCharSet;
+} TEXTMETRICA, *PTEXTMETRICA, NEAR *NPTEXTMETRICA, FAR *LPTEXTMETRICA;
+
+#ifdef UNICODE
+typedef TEXTMETRICW TEXTMETRIC;
+typedef PTEXTMETRICW PTEXTMETRIC;
+typedef NPTEXTMETRICW NPTEXTMETRIC;
+typedef LPTEXTMETRICW LPTEXTMETRIC;
+#else
+typedef TEXTMETRICA TEXTMETRIC;
+typedef PTEXTMETRICA PTEXTMETRIC;
+typedef NPTEXTMETRICA NPTEXTMETRIC;
+typedef LPTEXTMETRICA LPTEXTMETRIC;
+#endif // UNICODE
+
+#define LF_FACESIZE         32
+
+#ifdef __cplusplus
+#define EXTERN_C    extern "C"
+#else
+#define EXTERN_C    extern
+#endif
+
+#define STDMETHODCALLTYPE       __stdcall
+#define STDMETHODVCALLTYPE      __cdecl
+
+#define STDAPICALLTYPE          __stdcall
+#define STDAPIVCALLTYPE         __cdecl
+
+#define STDAPI                  EXTERN_C HRESULT STDAPICALLTYPE
+#define STDAPI_(type)           EXTERN_C type STDAPICALLTYPE
+
+//HRESULT STDAPICALLTYPE D3DXFileCreate(struct ID3DXFile **file);
+
+#if _MSC_VER >= 1100
+#define DECLSPEC_UUID( x ) __declspec( uuid( x ) )
+#else // !( _MSC_VER >= 1100 )
+#define DECLSPEC_UUID( x )
+#endif // !( _MSC_VER >= 1100 )
+
+#if (_MSC_VER >= 1100) && defined(__cplusplus)
+#define DECLSPEC_NOVTABLE __declspec(novtable)
+#else
+#define DECLSPEC_NOVTABLE
+#endif
+
+#define DECLARE_INTERFACE_IID(iface, iid)               interface DECLSPEC_UUID(iid) DECLSPEC_NOVTABLE iface
+#define DECLARE_INTERFACE_IID_(iface, baseiface, iid)   interface DECLSPEC_UUID(iid) DECLSPEC_NOVTABLE iface : public baseiface
+
+#ifndef GUID_DEFINED
+#define GUID_DEFINED
+typedef struct _GUID
+{
+    unsigned long  Data1;
+    unsigned short Data2;
+    unsigned short Data3;
+    unsigned char  Data4[8];
+} GUID;
+#endif /* GUID_DEFINED */
+
+#ifndef __LPGUID_DEFINED__
+#define __LPGUID_DEFINED__
+typedef GUID *LPGUID;
+#endif
+
+typedef struct _POINTFLOAT {
+    float   x;
+    float   y;
+} POINTFLOAT, *PPOINTFLOAT;
+
+typedef struct _GLYPHMETRICSFLOAT {
+    float       gmfBlackBoxX;
+    float       gmfBlackBoxY;
+    POINTFLOAT  gmfptGlyphOrigin;
+    float       gmfCellIncX;
+    float       gmfCellIncY;
+} GLYPHMETRICSFLOAT, *PGLYPHMETRICSFLOAT, FAR *LPGLYPHMETRICSFLOAT;
+
+typedef struct IStream IStream;
+
+#define SW_HIDE             0
+#define SW_SHOWNORMAL       1
+#define SW_NORMAL           1
+#define SW_SHOWMINIMIZED    2
+#define SW_SHOWMAXIMIZED    3
+#define SW_MAXIMIZE         3
+#define SW_SHOWNOACTIVATE   4
+#define SW_SHOW             5
+#define SW_MINIMIZE         6
+#define SW_SHOWMINNOACTIVE  7
+#define SW_SHOWNA           8
+#define SW_RESTORE          9
+#define SW_SHOWDEFAULT      10
+#define SW_FORCEMINIMIZE    11
+#define SW_MAX              11
 
 inline BOOL SwitchToThread() { return (0 == sched_yield()); }
 

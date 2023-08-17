@@ -2,8 +2,10 @@
 //
 //////////////////////////////////////////////////////////////////////
 
+#ifdef _WIN32
 #include "stdafx.h"
 #pragma hdrstop
+#endif
 
 #include "DetailManager.h"
 #include "xrCDB/Intersect.hpp"
