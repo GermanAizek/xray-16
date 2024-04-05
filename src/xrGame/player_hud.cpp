@@ -622,6 +622,9 @@ void player_hud::render_hud(u32 context_id, IRenderable* root)
 
 u32 player_hud::motion_length(const shared_str& anim_name, const shared_str& hud_name, const CMotionDef*& md)
 {
+    if (!hud_name)
+        return 100; // ms TEMPORARY
+
     const float speed = CalcMotionSpeed(anim_name);
     attachable_hud_item* pi = create_hud_item(hud_name);
     const player_hud_motion* pm = pi->m_hand_motions.find_motion(anim_name);
@@ -851,6 +854,9 @@ bool player_hud::allow_activation(CHudItem* item) const
 
 void player_hud::attach_item(CHudItem* item)
 {
+    if (!item->HudSection().c_str())
+        return; // No hud section – no attach
+
     attachable_hud_item* pi = create_hud_item(item->HudSection());
     const int item_idx = pi->m_attach_place_idx;
 
