@@ -11,7 +11,7 @@ out int gl_SampleMask[];
 #ifdef	MSAA_ALPHATEST_DX10_1_ATOC
 in vec4 gl_FragCoord;
 #endif // MSAA_ALPHATEST_DX10_1_ATOC
-#endif // #endif 
+#endif // ATOC
 
 struct v2p
 {

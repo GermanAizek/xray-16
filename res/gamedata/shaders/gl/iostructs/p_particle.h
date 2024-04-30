@@ -15,7 +15,7 @@ struct v2p
 #endif // USE_SOFT_PARTICLES
 #ifdef GBUFFER_OPTIMIZATION
 	float4 hpos	; // SV_Position;
-#endif // USE_SOFT_PARTICLES
+#endif // GBUFFER_OPTIMIZATION
 };
 
 layout(location = TEXCOORD0) 	in float2	p_particle_tc	; // TEXCOORD0;

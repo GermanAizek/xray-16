@@ -146,4 +146,4 @@ public:
 // Main configuration file
 extern CInifileEx* pSettingsEx;
 
-#endif //__XR_INI_H__
+#endif // xr_iniexH

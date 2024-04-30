@@ -35,4 +35,4 @@ class dxRenderFactory : public IRenderFactory
 
 extern dxRenderFactory RenderFactoryImpl;
 
-#endif //   RenderFactory_included
+#endif // dxRenderFactory_included

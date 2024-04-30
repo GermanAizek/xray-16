@@ -62,7 +62,7 @@ extern  void  gsDebugAssert			(const char *format,const char *szError,const char
 																				  
 
 
-#endif // GSI_COMMON_DEBUG
+#endif // _DEBUG
 
 
 // This is the default assert condition handler

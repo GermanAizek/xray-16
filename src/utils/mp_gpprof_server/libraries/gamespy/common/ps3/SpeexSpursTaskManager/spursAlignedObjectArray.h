@@ -289,7 +289,7 @@ class spursAlignedObjectArray
 			T temp = m_data[index0];
 			m_data[index0] = m_data[index1];
 			m_data[index1] = temp;
-#endif //BT_USE_PLACEMENT_NEW
+#endif // BT_USE_MEMCPY
 
 		}
 

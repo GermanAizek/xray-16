@@ -332,7 +332,7 @@ typedef int               gsi_bool;
 	#define gsi_char  char
 #else
 	#define gsi_char  unsigned short
-#endif // goa_char
+#endif // GSI_UNICODE
 
 
 // expected ranges for integer types

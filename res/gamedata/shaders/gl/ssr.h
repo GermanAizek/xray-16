@@ -139,5 +139,5 @@ float4 compute_ssr(float3 position, float3 normal, float3 skybox)
 	/*Image.rgb, Reflcontrol.a*/
 	return float4(img.xyz, edge);
 }
-#endif //SSR quality
-#endif //Header
+#endif // SSR_QUALITY
+#endif // SSR_H
